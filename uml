@@ -1,0 +1,49 @@
+@startuml
+
+scale 1280*720
+
+class Board {
+	name : String
+}
+
+class Topic {
+	name : String
+}
+
+class Post {
+	title : String
+	body : String
+	timestamp : DateTime
+}
+
+class Comment {
+	body : String
+	timestamp : DateTime
+}
+
+class Attachment {
+	filetype : String
+	path : String
+	name : String
+}
+
+class User {
+	email : String
+	username : String
+	password : String
+}
+
+class Role {
+	name : String
+}
+
+Board "1" o-- "*" Topic
+Topic "1" o-- "*" Post
+Post "1" o-- "*" Attachment
+Post "*" -- "1" User
+Post "1" o-- "*" Comment
+Comment "1" o-- "*" Attachment
+Comment "1" o-- "*" Comment : sub_comment
+User "*" -- "*" Role
+
+@enduml
