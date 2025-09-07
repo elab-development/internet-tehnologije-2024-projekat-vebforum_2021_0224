@@ -3,37 +3,45 @@
 scale 1280*720
 
 class Board {
+	id : int
 	name : String
 }
 
 class Topic {
+	id : int
 	name : String
 }
 
 class Post {
+	id : int
 	title : String
 	body : String
 	timestamp : DateTime
 }
 
 class Comment {
+	id : int
+	comment_id : int
 	body : String
 	timestamp : DateTime
 }
 
 class Attachment {
+	id : int
 	filetype : String
 	path : String
 	name : String
 }
 
 class User {
+	id : int
 	email : String
 	username : String
 	password : String
 }
 
 class Role {
+	id : int
 	name : String
 }
 
@@ -43,7 +51,7 @@ Post "1" o-- "*" Attachment
 Post "*" -- "1" User
 Post "1" o-- "*" Comment
 Comment "1" o-- "*" Attachment
-Comment "1" o-- "*" Comment : sub_comment
+Comment "1" o-- "*" Comment : reply
 User "*" -- "*" Role
 
 @enduml
