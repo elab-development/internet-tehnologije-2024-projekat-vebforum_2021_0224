@@ -5,25 +5,30 @@ scale 1280*720
 class Board {
 	id : int
 	name : String
+	timestamps : DateTime
 }
 
 class Topic {
 	id : int
 	name : String
+	timestamps : DateTime
+	board_id : int
 }
 
 class Post {
 	id : int
 	title : String
 	body : String
-	timestamp : DateTime
+	timestamps : DateTime
+	board_id : int
+	user_id : int
 }
 
 class Comment {
 	id : int
 	comment_id : int
 	body : String
-	timestamp : DateTime
+	timestamps : DateTime
 }
 
 class Attachment {
@@ -31,6 +36,7 @@ class Attachment {
 	filetype : String
 	path : String
 	name : String
+	timestamps : DateTime
 }
 
 class User {
@@ -38,11 +44,13 @@ class User {
 	email : String
 	username : String
 	password : String
+	timestamps : DateTime
 }
 
 class Role {
 	id : int
 	name : String
+	timestamps : DateTime
 }
 
 Board "1" o-- "*" Topic

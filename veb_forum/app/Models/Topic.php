@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Topic extends Model
 {
+
+    protected $guarded = [];
+
     public function board(): BelongsTo {
-        return $this->belongsTo(Board::class);
+        return $this->belongsTo(Board::class, "board_id");
     }
 
     public function posts(): HasMany {
