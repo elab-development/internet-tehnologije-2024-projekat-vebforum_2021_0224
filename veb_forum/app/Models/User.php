@@ -7,11 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+
+
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'role_users', 'user_id', 'role_id');
+    }
 
     public function posts(): HasMany {
         return $this->hasMany(Post::class);
@@ -19,10 +26,6 @@ class User extends Authenticatable
 
     public function comments(): HasMany {
         return $this->hasMany(Comment::class);
-    }
-
-    public function roles(): HasMany {
-        return $this->hasMany(Role::class);
     }
 
     /**

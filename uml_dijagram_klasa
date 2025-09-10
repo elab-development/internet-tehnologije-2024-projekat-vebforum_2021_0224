@@ -53,6 +53,12 @@ class Role {
 	timestamps : DateTime
 }
 
+class RoleUser {
+	id : int
+	role_id : int
+	user_id : int
+}
+
 Board "1" o-- "*" Topic
 Topic "1" o-- "*" Post
 Post "1" o-- "*" Attachment
@@ -61,5 +67,6 @@ Post "1" o-- "*" Comment
 Comment "1" o-- "*" Attachment
 Comment "1" o-- "*" Comment : reply
 User "*" -- "*" Role
+(User, Role) .. RoleUser
 
 @enduml
