@@ -1,6 +1,6 @@
 @startuml
 
-scale 1280*720
+scale 1920*1080
 
 class Board {
 	id : int
@@ -29,6 +29,8 @@ class Comment {
 	comment_id : int
 	body : String
 	timestamps : DateTime
+	post_id : int
+	user_id : int
 }
 
 class Attachment {
